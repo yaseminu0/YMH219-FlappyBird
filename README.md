@@ -26,15 +26,15 @@ Oyunun arayüzü, arka planı, kuşu, engelleri ve coin görselleri harici görs
 
 | Ana Menü | Oyun Ekranı |
 |:---:|:---:|
-| ![Ana Menü](main-menu.png) | ![Oyun Ekranı](gameplay.png) |
+| ![Ana Menü](screenshots/main-menu.png) | ![Oyun Ekranı](screenshots/gameplay.png) |
 
 | Kuş Seçimi | Nasıl Oynanır? |
 |:---:|:---:|
-| ![Kuş Seçimi](bird-selection.png) | ![Nasıl Oynanır?](how-to-play.png) |
+| ![Kuş Seçimi](screenshots/bird-selection.png) | ![Nasıl Oynanır?](screenshots/how-to-play.png) |
 
 | Duraklatma | Game Over |
 |:---:|:---:|
-| ![Duraklatma](pause.png) | ![Game Over](game-over.png) |
+| ![Duraklatma](screenshots/pause.png) | ![Game Over](screenshots/game-over.png) |
 
 
 ## ✨ Oyun Özellikleri
@@ -226,10 +226,17 @@ cd YMH219-FlappyBird
 
 ## 📁 Proje Dosyaları
 
-Temel kaynak dosyaları:
+Depodaki temel dosya ve görsellerin yapısı:
 
 ```text
 YMH219-FlappyBird/
+├── screenshots/
+│   ├── main-menu.png
+│   ├── gameplay.png
+│   ├── bird-selection.png
+│   ├── how-to-play.png
+│   ├── pause.png
+│   └── game-over.png
 ├── Program.cs
 ├── Form1.cs
 ├── Form1.Designer.cs
@@ -238,26 +245,9 @@ YMH219-FlappyBird/
 ├── Coin.cs
 ├── GameManager.cs
 ├── PlayerData.cs
+├── YMH219-FlappyBird.csproj
 ├── .gitignore
-├── README.md
-├── main-menu.png
-├── gameplay.png
-├── bird-selection.png
-├── how-to-play.png
-├── pause.png
-└── game-over.png
-```
-
-Oyun görselleri eklendiğinde depo yapısına ayrıca şu klasör eklenebilir:
-
-```text
-
-├── main-menu.png
-├── gameplay.png
-├── bird-selection.png
-├── how-to-play.png
-├── pause.png
-└── game-over.png
+└── README.md
 ```
 
 ## 👩‍💻 Geliştirici
