@@ -1,142 +1,154 @@
-# YMH219 – Neon Flappy Bird
+# 🐦 Neon Flappy Bird
 
-C# ve Windows Forms kullanılarak geliştirilen, Flappy Bird oyunundan esinlenen 2D bir masaüstü arcade oyunudur. Proje, Fırat Üniversitesi Yazılım Mühendisliği bölümü **YMH219 – Nesne Tabanlı Programlama** dersi kapsamında hazırlanmıştır.
+<p align="center">
+  <strong>YMH219 – Nesne Tabanlı Programlama</strong><br>
+  C# ve Windows Forms ile geliştirilen, neon gece temalı 2D arcade oyunu.
+</p>
 
-Oyuncu, farklı renklerdeki kuşlardan birini seçerek neon ışıklı bir gece şehrinde engellerin arasından geçmeye, puan toplamaya ve uçuş sırasında altın coin'leri yakalamaya çalışır. Oyun ilerledikçe engellerin hızı ve aralarındaki mesafe değişerek zorluk artar.
+<p align="center">
+  <img src="https://img.shields.io/badge/C%23-Programming%20Language-512BD4?logo=csharp&logoColor=white" alt="C#">
+  <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10">
+  <img src="https://img.shields.io/badge/Windows%20Forms-Desktop%20App-0078D4" alt="Windows Forms">
+  <img src="https://img.shields.io/badge/Project-Game-00C7B7" alt="Game Project">
+</p>
 
-## İçindekiler
+---
 
-- [Proje Özellikleri](#proje-özellikleri)
-- [Ekran Görüntüleri](#ekran-görüntüleri)
-- [Kullanılan Teknolojiler](#kullanılan-teknolojiler)
-- [Kurulum ve Çalıştırma](#kurulum-ve-çalıştırma)
-- [Kontroller](#kontroller)
-- [Oyun Mekanikleri](#oyun-mekanikleri)
-- [Proje Mimarisi ve Sınıflar](#proje-mimarisi-ve-sınıflar)
-- [Oyuncu Verilerinin Saklanması](#oyuncu-verilerinin-saklanması)
-- [Proje Yapısı](#proje-yapısı)
-- [Geliştirme Notları](#geliştirme-notları)
-- [Geliştirici](#geliştirici)
+## 🎮 Proje Hakkında
 
-## Proje Özellikleri
+**Neon Flappy Bird**, klasik Flappy Bird oyunundan esinlenerek C# ve Windows Forms kullanılarak geliştirilmiş bir masaüstü arcade oyunudur. Oyuncu, seçtiği kuşla neon ışıklı gece atmosferinde engellerin arasından geçmeye, puan kazanmaya ve altın coin toplamaya çalışır.
 
-- **Neon Night teması:** Yıldızlar, ay, neon ışıklı binalar ve gece atmosferiyle özel çizilmiş oyun arka planı.
-- **Animasyonlu kuş:** Kanat animasyonu, uçuş yönüne göre dönüş ve zıplama/dalış hareketleri.
-- **Dört kuş seçeneği:** Sarı, mavi, kırmızı ve yeşil kuş türleri.
-- **Hareketli engeller:** Rastgele açıklık konumlarına sahip, neon detaylarla çizilmiş boru/engel çiftleri.
-- **Çarpışma kontrolü:** Kuşun engellere, tavana veya zemine temas etmesi durumunda oyun sona erer.
-- **Puan sistemi:** Her engel çiftinin başarıyla geçilmesi puan kazandırır.
-- **Coin sistemi:** Oyun sırasında toplanabilen animasyonlu altın coin'ler.
-- **Seviye ve zorluk sistemi:** Puan arttıkça engel hızı, engeller arası mesafe ve geçiş açıklığı kademeli olarak değişir.
-- **Oyun durumları:** Ana menü, oyun, duraklatma ve Game Over ekranları.
-- **Ayarlar ve talimatlar:** Oyun içi talimat ekranı ve efekt ayarı.
-- **Kalıcı oyuncu verileri:** En yüksek puan ve toplam coin bilgileri sonraki oturumlar için yerel olarak saklanır.
+Oyun; animasyon, çarpışma kontrolü, puan ve coin sistemi, zorluk seviyeleri ve oyuncu verilerinin yerel olarak saklanması gibi özellikler içerir.
 
-## Ekran Görüntüleri
+## ✨ Özellikler
 
-Aşağıdaki alanlara oyunun gerçek ekran görüntüleri eklenecektir.
+- 🌃 **Neon Night teması:** Yıldızlar, ay ve neon ışıklı şehir arka planı.
+- 🐤 **Kuş seçimi:** Sarı, mavi, kırmızı ve yeşil olmak üzere dört kuş seçeneği.
+- 🪽 **Animasyonlu hareket:** Kanat animasyonu, uçuş açısı, zıplama ve dalış hareketleri.
+- 🚧 **Engel sistemi:** Hareket eden engeller ve değişen geçiş boşlukları.
+- 💥 **Çarpışma kontrolü:** Engellere, tavana veya zemine temas edildiğinde oyun sona erer.
+- 🏆 **Puan sistemi:** Başarıyla geçilen her engel çifti puan kazandırır.
+- 🪙 **Coin sistemi:** Oyun sırasında toplanabilen animasyonlu coin'ler.
+- 📈 **Artan zorluk:** Puan yükseldikçe oyun zorluğu kademeli olarak artar.
+- ⏸️ **Oyun durumları:** Ana menü, oyun, duraklatma ve Game Over ekranları.
+- ⚙️ **Ayarlar ve talimatlar:** Oyun içi ayar ve yardım ekranları.
+- 💾 **Kalıcı veriler:** En yüksek puan ve toplam coin bilgileri yerel olarak saklanır.
 
-| Ana Menü | Oyun Ekranı | Game Over |
-| :---: | :---: | :---: |
-| *Ekran görüntüsü eklenecek* | *Ekran görüntüsü eklenecek* | *Ekran görüntüsü eklenecek* |
+## 🖼️ Ekran Görüntüleri
 
-## Kullanılan Teknolojiler
+> Görselleri eklemek için proje ana dizininde `screenshots` adlı bir klasör oluştur. Ekran görüntülerini aşağıdaki dosya adlarıyla bu klasöre yerleştir.
 
-| Teknoloji | Kullanım Amacı |
-| --- | --- |
-| C# | Oyun mantığı ve nesne yönelimli programlama |
-| .NET 10 | Uygulamanın hedef çalışma platformu |
-| Windows Forms | Masaüstü kullanıcı arayüzü ve pencere yönetimi |
-| GDI+ (System.Drawing) | Oyun nesnelerinin ve animasyonların çizimi |
-| Visual Studio | Geliştirme, derleme ve hata ayıklama |
-| Git & GitHub | Sürüm kontrolü ve kaynak kod yönetimi |
+### Ana Menü
+![Ana Menü](screenshots/main-menu.png)
 
-## Kurulum ve Çalıştırma
+### Oyun Ekranı
+![Oyun Ekranı](screenshots/gameplay.png)
+
+### Kuş Seçimi
+![Kuş Seçimi](screenshots/bird-selection.png)
+
+### Game Over
+![Game Over](screenshots/game-over.png)
+
+### Ayarlar
+![Ayarlar](screenshots/settings.png)
+
+## 🛠️ Kullanılan Teknolojiler
+
+| Teknoloji | Kullanım amacı |
+|---|---|
+| **C#** | Oyun mantığı ve nesne yönelimli programlama |
+| **.NET 10** | Uygulamanın çalışma platformu |
+| **Windows Forms** | Masaüstü arayüzü ve pencere yönetimi |
+| **GDI+ (System.Drawing)** | Oyun nesnelerinin çizimi ve görsel efektler |
+| **Visual Studio** | Kod geliştirme, derleme ve hata ayıklama |
+| **Git & GitHub** | Sürüm kontrolü ve kaynak kod yönetimi |
+
+## 🚀 Kurulum ve Çalıştırma
 
 ### Gereksinimler
 
 - Windows 10 veya Windows 11
 - .NET 10 SDK
-- Visual Studio 2026 (Windows Forms ve .NET masaüstü geliştirme bileşenleri)
-- Git (depoyu klonlamak için)
+- Visual Studio 2026
+- Visual Studio'da **.NET masaüstü geliştirme** bileşeni
 
-### Depoyu klonlama
+### 1. Depoyu klonla
 
-PowerShell veya Terminal üzerinden:
+PowerShell veya Terminal'i açıp şu komutları çalıştır:
 
 ```powershell
 git clone https://github.com/yaseminu0/YMH219-FlappyBird.git
 cd YMH219-FlappyBird
 ```
 
-### Visual Studio ile çalıştırma
+### 2. Visual Studio ile aç
 
-1. Depoyu bilgisayarınıza klonlayın veya ZIP olarak indirin.
-2. Proje klasöründeki solution (.sln) dosyasını Visual Studio ile açın.
-3. Gerekli .NET SDK bileşenlerinin yüklü olduğunu kontrol edin.
-4. **Build > Build Solution** seçeneğiyle projeyi derleyin.
-5. **Start** düğmesine veya **F5** tuşuna basarak oyunu başlatın.
+1. Proje klasöründeki `.sln` dosyasını Visual Studio ile aç.
+2. Gerekli .NET SDK bileşenlerinin yüklü olduğundan emin ol.
+3. **Build > Build Solution** seçeneğiyle projeyi derle.
+4. **F5** tuşuna basarak oyunu çalıştır.
 
-## Kontroller
+## 🎯 Kontroller
 
-| Tuş / İşlem | Açıklama |
-| --- | --- |
-| Space veya ↑ | Kuşu yukarı zıplatır. |
-| ↓ | Oyun sırasında kuşun daha hızlı aşağı inmesini sağlar (dive). |
-| P | Oyunu duraklatır veya devam ettirir. |
-| Escape | Açık olan talimat/seçim/ayar ekranından geri döner; oyun duraklatılmışsa devam ettirir. |
-| Enter | Game Over ekranında yeni oyunu başlatır. |
-| Fare tıklaması | Menü seçeneklerini ve oyun içi butonları kullanır; oyun sırasında kuşu zıplatır. |
+| Tuş / İşlem | Görev |
+|---|---|
+| **Space** veya **↑** | Kuşu yukarı zıplatır. |
+| **↓** | Kuşun daha hızlı aşağı inmesini sağlar (dive). |
+| **P** | Oyunu duraklatır veya devam ettirir. |
+| **Escape** | İlgili ekrandan geri döner; oyun duraklatılmışsa devam ettirir. |
+| **Enter** | Game Over ekranında yeni oyunu başlatır. |
+| **Fare tıklaması** | Menü ve oyun içi butonları kullanır; oyun sırasında kuşu zıplatır. |
 
-## Oyun Mekanikleri
+## 🧩 Oyun Mekanikleri
 
-### Uçuş ve hareket
-
-Kuşun hareketi yerçekimi, zıplama kuvveti ve maksimum düşüş hızı kullanılarak hesaplanır. Kanat animasyonu ve kuşun açısı uçuş hareketine göre güncellenir.
+### Uçuş
+Kuşun hareketi yerçekimi, zıplama kuvveti ve maksimum düşüş hızı kullanılarak hesaplanır. Kanat animasyonu ve kuşun dönüş açısı uçuş hareketine göre güncellenir.
 
 ### Engeller ve puan
+Engeller oyun alanında hareket eder. Kuş bir engel çiftini başarıyla geçtiğinde puan kazanır. Engellere, tavana veya zemine çarpılması oyunu bitirir.
 
-Engeller ekran boyunca hareket eder. Kuş bir engel çiftini geçtikten sonra puan kazanır. Engellere, tavana veya zemine çarpılması oyunu bitirir.
+### Zorluk
+Puan arttıkça engellerin hızı, aralarındaki mesafe ve geçiş boşluğu kademeli olarak değişir.
 
-### Seviye sistemi
+### Coin
+Kuş, oyun alanındaki coin'lere temas ettiğinde coin toplanır ve toplam coin sayısı güncellenir.
 
-Zorluk, mevcut puana göre belirlenir. Seviye yükseldikçe engel hızı artırılır, engeller arasındaki yatay mesafe ve geçiş boşluğu azaltılır. Zorluk adları **EASY**, **NORMAL**, **HARD** ve **EXPERT** olarak gösterilir.
+## 🏗️ Proje Mimarisi
 
-### Coin sistemi
+Projedeki temel sınıflar ve görevleri:
 
-Coin'ler engellerin geçiş boşluğunda yer alır. Kuş coin ile temas ettiğinde coin toplanır ve toplam coin sayısı güncellenir.
-
-## Proje Mimarisi ve Sınıflar
-
-Proje, oyun sorumluluklarını farklı sınıflara ayıran nesne yönelimli bir yapıyla geliştirilmiştir.
-
-| Sınıf | Sorumluluk |
-| --- | --- |
-| `Program` | Uygulamanın başlangıç noktasıdır ve ana Windows Forms penceresini açar. |
+| Sınıf / Enum | Sorumluluk |
+|---|---|
+| `Program` | Uygulamanın başlangıç noktasıdır. |
 | `Form1` | Ana pencereyi, menüleri, kullanıcı girişlerini, oyun döngüsünü ve çizim akışını yönetir. |
-| `Bird` | Kuşun türünü, hareketini, zıplamasını, dalışını, animasyonunu ve çizimini yönetir. |
-| `Pipe` | Engellerin konumunu, geçiş boşluğunu, hareketini, puan kontrolünü, çarpışmasını ve çizimini yönetir. |
-| `Coin` | Coin konumunu, animasyonunu, toplanma kontrolünü ve çizimini yönetir. |
-| `GameManager` | Oyun durumunu, puanı, seviyeyi, zorluğu, çarpışmaları ve oyun nesneleri arasındaki koordinasyonu yönetir. |
-| `PlayerData` | En yüksek puan ve toplam coin verilerini yerel dosyaya kaydeder ve yükler. |
-| `BirdType` | Kuş seçeneklerini `Yellow`, `Blue`, `Red` ve `Green` olarak tanımlar. |
+| `Bird` | Kuş türünü, hareketini, animasyonunu ve çizimini yönetir. |
+| `Pipe` | Engellerin konumunu, hareketini, çizimini ve ilgili kontrolleri yönetir. |
+| `Coin` | Coin animasyonunu, konumunu, çizimini ve toplanma kontrolünü yönetir. |
+| `GameManager` | Oyun durumunu, puanı, seviyeyi, zorluğu ve oyun nesneleri arasındaki koordinasyonu yönetir. |
+| `PlayerData` | En yüksek puan ve toplam coin verilerini kaydeder ve yükler. |
+| `BirdType` | Kuş türlerini `Yellow`, `Blue`, `Red` ve `Green` olarak tanımlar. |
 
-## Oyuncu Verilerinin Saklanması
+## 💾 Oyuncu Verilerinin Saklanması
 
-En yüksek puan ve toplam coin sayısı, Windows kullanıcısının yerel uygulama verileri klasöründe saklanır:
+En yüksek puan ve toplam coin sayısı aşağıdaki yerel dosyada saklanır:
 
 ```text
 %LOCALAPPDATA%\YMH219_FlappyBird\playerdata.txt
 ```
 
-Dosyada ilk satır en yüksek puanı, ikinci satır toplam coin sayısını tutar. Oyun ilk kez açıldığında dosyanın henüz bulunmaması normaldir; kayıt gerektiğinde klasör ve dosya oluşturulur. Dosya erişimiyle ilgili bir hata oluşursa oyun çalışmaya devam edecek şekilde tasarlanmıştır.
+Dosyanın ilk satırında en yüksek puan, ikinci satırında toplam coin sayısı tutulur.
 
-## Proje Yapısı
-
-Depodaki temel kaynak dosyaları:
+## 📁 Proje Yapısı
 
 ```text
 YMH219-FlappyBird/
+├── screenshots/
+│   ├── main-menu.png
+│   ├── gameplay.png
+│   ├── bird-selection.png
+│   ├── game-over.png
+│   └── settings.png
 ├── Program.cs
 ├── Form1.cs
 ├── Form1.Designer.cs
@@ -145,25 +157,19 @@ YMH219-FlappyBird/
 ├── Coin.cs
 ├── GameManager.cs
 ├── PlayerData.cs
-├── .gitignore
 └── README.md
 ```
 
-## Geliştirme Notları
-
-- Oyun alanı 800 × 550 piksel boyutlarında sabit bir Windows Forms penceresi olarak tasarlanmıştır.
-- Oyun çizimleri harici görsel dosyalar yerine C# ve GDI+ kullanılarak oluşturulur.
-- Oyun güncelleme döngüsü Windows Forms Timer üzerinden yürütülür.
-- Derleme çıktıları (`bin/`, `obj/`) ve Visual Studio kullanıcı dosyaları Git tarafından takip edilmez.
-
-## Geliştirici
+## 👩‍💻 Geliştirici
 
 **Yasemin Ubeyd**
 
-GitHub: [@yaseminu0](https://github.com/yaseminu0)
-
-Repository: [YMH219-FlappyBird](https://github.com/yaseminu0/YMH219-FlappyBird)
+- GitHub: [@yaseminu0](https://github.com/yaseminu0)
+- Proje deposu: [YMH219-FlappyBird](https://github.com/yaseminu0/YMH219-FlappyBird)
 
 ---
 
-Bu proje, YMH219 Nesne Tabanlı Programlama dersi kapsamında eğitim amacıyla geliştirilmiştir.
+<p align="center">
+  <i>Fırat Üniversitesi – Yazılım Mühendisliği</i><br>
+  <strong>YMH219 – Nesne Tabanlı Programlama</strong>
+</p>
