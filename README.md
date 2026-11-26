@@ -30,13 +30,13 @@ Ekran görüntülerini proje kök dizininde oluşturacağın `screenshots` klas�
 |:---:|:---:|
 | ![Ana Menü](screenshots/main-menu.png) | ![Oyun Ekranı](screenshots/gameplay.png) |
 
-| Kuş Seçimi | Duraklatma |
+| Kuş Seçimi | Nasıl Oynanır? |
 |:---:|:---:|
-| ![Kuş Seçimi](screenshots/bird-selection.png) | ![Duraklatma](screenshots/pause.png) |
+| ![Kuş Seçimi](screenshots/bird-selection.png) | ![Nasıl Oynanır?](screenshots/how-to-play.png) |
 
-| Game Over |
-|:---:|
-| ![Game Over](screenshots/game-over.png) |
+| Duraklatma | Game Over |
+|:---:|:---:|
+| ![Duraklatma](screenshots/pause.png) | ![Game Over](screenshots/game-over.png) |
 
 > Görselleri ekleyene kadar GitHub bu alanlarda görsel bulamayabilir. Dosya adlarını ve klasör yolunu aynı tutman yeterlidir.
 
@@ -250,6 +250,7 @@ screenshots/
 ├── main-menu.png
 ├── gameplay.png
 ├── bird-selection.png
+├── how-to-play.png
 ├── pause.png
 └── game-over.png
 ```
