@@ -2,7 +2,7 @@
 
 <p align="center">
   <strong>Neon şehir atmosferinde klasik Flappy Bird deneyimi</strong><br>
-  C# • Windows Forms • GDI+
+  C# • .NET 10 • Windows Forms • GDI+
 </p>
 
 <p align="center">
@@ -24,21 +24,18 @@ Oyunun arayüzü, arka planı, kuşu, engelleri ve coin görselleri harici görs
 
 ## 🖼️ Oyun Görselleri
 
-Ekran görüntülerini proje kök dizininde oluşturacağın `screenshots` klasörüne, aşağıdaki dosya adlarıyla ekleyebilirsin.
-
 | Ana Menü | Oyun Ekranı |
 |:---:|:---:|
-| ![Ana Menü](screenshots/main-menu.png) | ![Oyun Ekranı](screenshots/gameplay.png) |
+| ![Ana Menü](main-menu.png) | ![Oyun Ekranı](gameplay.png) |
 
 | Kuş Seçimi | Nasıl Oynanır? |
 |:---:|:---:|
-| ![Kuş Seçimi](screenshots/bird-selection.png) | ![Nasıl Oynanır?](screenshots/how-to-play.png) |
+| ![Kuş Seçimi](bird-selection.png) | ![Nasıl Oynanır?](how-to-play.png) |
 
 | Duraklatma | Game Over |
 |:---:|:---:|
-| ![Duraklatma](screenshots/pause.png) | ![Game Over](screenshots/game-over.png) |
+| ![Duraklatma](pause.png) | ![Game Over](game-over.png) |
 
-> Görselleri ekleyene kadar GitHub bu alanlarda görsel bulamayabilir. Dosya adlarını ve klasör yolunu aynı tutman yeterlidir.
 
 ## ✨ Oyun Özellikleri
 
@@ -86,6 +83,7 @@ Kuş; kanat hareketi animasyonuna, uçuş hızına bağlı dönüş açısına, 
 - Kuş Seçimi
 - How to Play (Nasıl Oynanır?)
 - Oyun ekranı
+- Settings (Ayarlar)
 - Pause (Duraklatma)
 - Game Over
 
@@ -197,20 +195,20 @@ Mevcut koşuda toplanan coin sayısı (`RunCoins`) ayrıca Game Over ekranında 
 | Teknoloji | Projedeki kullanım |
 |---|---|
 | **C#** | Oyun mantığı, sınıflar ve nesne yönelimli programlama |
+| **.NET 10 (net10.0-windows)** | Uygulamanın hedef çalışma platformu |
 | **Windows Forms** | Masaüstü penceresi ve kullanıcı etkileşimi |
 | **System.Drawing / GDI+** | Arka plan, karakterler, engeller, coin'ler, metinler ve efektlerin çizimi |
 | **Windows Forms Timer** | Oyun güncelleme döngüsü |
 | **Git & GitHub** | Kaynak kodun sürüm kontrolü ve paylaşımı |
 | **Visual Studio** | Geliştirme, derleme ve hata ayıklama |
 
-> Hedef .NET sürümünü kesin olarak belirtmek için proje dosyasındaki (`.csproj`) `TargetFramework` değerine bakılmalıdır. Bu README'de doğrulanmamış bir sürüm numarası özellikle yazılmamıştır.
 
 ## 🚀 Kurulum ve Çalıştırma
 
 ### Gereksinimler
 - Windows işletim sistemi.
 - Visual Studio ve **.NET masaüstü geliştirme** iş yükü.
-- Proje dosyasında belirtilen .NET SDK.
+- .NET 10 SDK.
 
 ### Depoyu klonlama
 
@@ -221,7 +219,7 @@ cd YMH219-FlappyBird
 
 ### Visual Studio ile çalıştırma
 1. Depoyu Visual Studio ile aç.
-2. Çözüm (`.sln`) veya C# proje (`.csproj`) dosyasını aç.
+2. `YMH219-FlappyBird.csproj` dosyasını Visual Studio ile aç.
 3. Gerekli .NET SDK'nın yüklü olduğundan emin ol.
 4. **Build > Build Solution** ile projeyi derle.
 5. **F5** ile uygulamayı başlat.
@@ -240,13 +238,20 @@ YMH219-FlappyBird/
 ├── Coin.cs
 ├── GameManager.cs
 ├── PlayerData.cs
-└── README.md
+├── .gitignore
+├── README.md
+├── main-menu.png
+├── gameplay.png
+├── bird-selection.png
+├── how-to-play.png
+├── pause.png
+└── game-over.png
 ```
 
 Oyun görselleri eklendiğinde depo yapısına ayrıca şu klasör eklenebilir:
 
 ```text
-screenshots/
+
 ├── main-menu.png
 ├── gameplay.png
 ├── bird-selection.png
