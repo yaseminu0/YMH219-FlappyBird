@@ -34,9 +34,9 @@ Ekran görüntülerini proje kök dizininde oluşturacağın `screenshots` klas�
 |:---:|:---:|
 | ![Kuş Seçimi](screenshots/bird-selection.png) | ![Duraklatma](screenshots/pause.png) |
 
-| Game Over | Ayarlar |
-|:---:|:---:|
-| ![Game Over](screenshots/game-over.png) | ![Ayarlar](screenshots/settings.png) |
+| Game Over |
+|:---:|
+| ![Game Over](screenshots/game-over.png) |
 
 > Görselleri ekleyene kadar GitHub bu alanlarda görsel bulamayabilir. Dosya adlarını ve klasör yolunu aynı tutman yeterlidir.
 
@@ -85,7 +85,6 @@ Kuş; kanat hareketi animasyonuna, uçuş hızına bağlı dönüş açısına, 
 - Ana Menü
 - Kuş Seçimi
 - How to Play (Nasıl Oynanır?)
-- Settings (Ayarlar)
 - Oyun ekranı
 - Pause (Duraklatma)
 - Game Over
@@ -100,7 +99,7 @@ Settings ekranında **Visual Effects** seçeneği açılıp kapatılabilir. Bu s
 | `Space` veya `↑` | Oyunu başlatır veya kuşu zıplatır. |
 | `↓` | Oyun sırasında kuşun daha hızlı aşağı inmesini sağlar (dive). |
 | `P` | Devam eden oyunu duraklatır veya devam ettirir. |
-| `Escape` | Talimat, kuş seçimi veya ayarlar ekranını kapatır; oyun duraklatılmışsa devam ettirir. |
+| `Escape` | Talimat veya kuş seçimi ekranını kapatır; oyun duraklatılmışsa devam ettirir. |
 | `Enter` | Game Over ekranında yeni oyunu başlatır. |
 | Fare tıklaması | Menü seçeneklerini seçer; oyun sırasında kuşu zıplatır. |
 | Pause düğmesi | Oyun ekranındaki duraklatma menüsünü açar. |
@@ -252,8 +251,7 @@ screenshots/
 ├── gameplay.png
 ├── bird-selection.png
 ├── pause.png
-├── game-over.png
-└── settings.png
+└── game-over.png
 ```
 
 ## 👩‍💻 Geliştirici
