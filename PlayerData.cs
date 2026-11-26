@@ -6,18 +6,18 @@ namespace YMH219_FlappyBird
 {
     public static class PlayerData
     {
-        private static readonly string Folder =
+        private static readonly string FolderPath =
             Path.Combine(
                 Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData),
-                "YMH219_FlappyBird");
+                    Environment.SpecialFolder.LocalApplicationData
+                ),
+                "YMH219_FlappyBird"
+            );
 
         private static readonly string FilePath =
-            Path.Combine(Folder, "playerdata.txt");
+            Path.Combine(FolderPath, "playerdata.txt");
 
-        public static void Load(
-            out int bestScore,
-            out int totalCoins)
+        public static void Load(out int bestScore, out int totalCoins)
         {
             bestScore = 0;
             totalCoins = 0;
@@ -29,36 +29,52 @@ namespace YMH219_FlappyBird
 
                 string[] lines = File.ReadAllLines(FilePath);
 
-                if (lines.Length > 0)
+                if (lines.Length >= 1)
                     int.TryParse(lines[0], out bestScore);
 
-                if (lines.Length > 1)
+                if (lines.Length >= 2)
                     int.TryParse(lines[1], out totalCoins);
+
+                bestScore = Math.Max(0, bestScore);
+                totalCoins = Math.Max(0, totalCoins);
             }
-            catch
+            catch (IOException)
+            {
+                bestScore = 0;
+                totalCoins = 0;
+            }
+            catch (UnauthorizedAccessException)
             {
                 bestScore = 0;
                 totalCoins = 0;
             }
         }
 
-        public static void Save(
-            int bestScore,
-            int totalCoins)
+        public static void Save(int bestScore, int totalCoins)
         {
             try
             {
-                Directory.CreateDirectory(Folder);
+                Directory.CreateDirectory(FolderPath);
 
-                File.WriteAllLines(FilePath, new[]
+                string[] lines =
                 {
-                    bestScore.ToString(),
-                    totalCoins.ToString()
-                });
+                    Math.Max(0, bestScore).ToString(),
+                    Math.Max(0, totalCoins).ToString()
+                };
+
+                string temporaryFile = FilePath + ".tmp";
+
+                File.WriteAllLines(temporaryFile, lines);
+
+                File.Move(temporaryFile, FilePath, true);
             }
-            catch
+            catch (IOException)
             {
-                // اللعبة تستمر حتى لو تعذر الحفظ.
+                // Keep the game running if saving fails.
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Keep the game running if access is denied.
             }
         }
     }
