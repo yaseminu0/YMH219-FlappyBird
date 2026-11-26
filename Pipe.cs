@@ -102,167 +102,241 @@ namespace YMH219_FlappyBird
             DrawPipePart(g, BottomBounds, false);
         }
 
-        private void DrawPipePart(
-            Graphics g,
-            Rectangle rect,
-            bool isTop)
+        private void DrawPipePart(Graphics g, Rectangle rect, bool isTop)
         {
-            if (rect.Width <= 0 || rect.Height <= 0)
+            if (rect.Height <= 0 || rect.Width <= 0)
                 return;
 
-            Color dark = Color.FromArgb(5, 14, 38);
-            Color blue = Color.FromArgb(12, 55, 105);
+            Color dark = Color.FromArgb(5, 13, 35);
+            Color blue = Color.FromArgb(13, 55, 105);
             Color cyan = Color.FromArgb(45, 225, 255);
-            Color purple = Color.FromArgb(135, 85, 255);
 
-            using (LinearGradientBrush body =
-                new LinearGradientBrush(
-                    rect,
-                    blue,
-                    dark,
-                    LinearGradientMode.Horizontal))
+            // Building shadow
+            Rectangle shadowRect = new Rectangle(
+                rect.X + 5,
+                rect.Y,
+                rect.Width,
+                rect.Height
+            );
+
+            using (SolidBrush shadow = new SolidBrush(
+                Color.FromArgb(80, 0, 0, 0)))
+            {
+                g.FillRectangle(shadow, shadowRect);
+            }
+
+            // Main building body
+            using (LinearGradientBrush body = new LinearGradientBrush(
+                rect,
+                blue,
+                dark,
+                LinearGradientMode.Horizontal))
             {
                 g.FillRectangle(body, rect);
             }
 
-            // Outer neon glow
-            using (Pen glow = new Pen(
-                Color.FromArgb(35, cyan), 10))
-            using (Pen border = new Pen(
-                Color.FromArgb(220, cyan), 2))
+            // Architectural side panels
+            DrawObstacleSidePanels(g, rect);
+
+            // Repeated illuminated windows
+            DrawObstacleWindows(g, rect, isTop);
+
+            // Structural horizontal floors
+            DrawObstacleFloors(g, rect);
+
+            // Neon outline
+            using (Pen outerGlow = new Pen(
+                Color.FromArgb(35, cyan), 11))
+            using (Pen middleGlow = new Pen(
+                Color.FromArgb(75, cyan), 5))
+            using (Pen outline = new Pen(
+                Color.FromArgb(235, cyan), 2))
             {
-                g.DrawRectangle(glow, rect);
-                g.DrawRectangle(border, rect);
+                g.DrawRectangle(outerGlow, rect);
+                g.DrawRectangle(middleGlow, rect);
+                g.DrawRectangle(outline, rect);
             }
 
-            // Metallic side panels
-            DrawSidePanels(g, rect, cyan, purple);
+            // Energy platform at the opening
+            DrawEnergyGate(g, rect, isTop);
 
-            // Futuristic details
-            DrawTechDetails(g, rect);
-
-            // Energy gate cap
-            DrawCap(g, rect, isTop);
+            // Decorative corner lights
+            DrawObstacleCornerLights(g, rect);
         }
 
-        private void DrawSidePanels(
-            Graphics g,
-            Rectangle rect,
-            Color cyan,
-            Color purple)
+        private void DrawObstacleSidePanels(Graphics g, Rectangle rect)
         {
             if (rect.Height < 35)
                 return;
 
-            using (Pen leftLine = new Pen(
-                Color.FromArgb(190, cyan), 2))
-            using (Pen rightLine = new Pen(
-                Color.FromArgb(170, purple), 2))
+            using (LinearGradientBrush leftPanel =
+                new LinearGradientBrush(
+                    new Rectangle(rect.X + 3, rect.Y, 12, rect.Height),
+                    Color.FromArgb(60, 75, 145, 205),
+                    Color.FromArgb(10, 15, 35),
+                    LinearGradientMode.Horizontal))
+            using (LinearGradientBrush rightPanel =
+                new LinearGradientBrush(
+                    new Rectangle(rect.Right - 15, rect.Y, 12, rect.Height),
+                    Color.FromArgb(10, 15, 35),
+                    Color.FromArgb(60, 75, 145, 205),
+                    LinearGradientMode.Horizontal))
+            {
+                g.FillRectangle(
+                    leftPanel,
+                    rect.X + 3,
+                    rect.Y,
+                    12,
+                    rect.Height
+                );
+
+                g.FillRectangle(
+                    rightPanel,
+                    rect.Right - 15,
+                    rect.Y,
+                    12,
+                    rect.Height
+                );
+            }
+
+            using (Pen cyanLine = new Pen(
+                Color.FromArgb(190, 65, 220, 255), 2))
+            using (Pen purpleLine = new Pen(
+                Color.FromArgb(170, 155, 85, 255), 1))
             {
                 g.DrawLine(
-                    leftLine,
-                    rect.X + 10,
-                    rect.Y + 8,
-                    rect.X + 10,
-                    rect.Bottom - 8
+                    cyanLine,
+                    rect.X + 15,
+                    rect.Y + 5,
+                    rect.X + 15,
+                    rect.Bottom - 5
                 );
 
                 g.DrawLine(
-                    rightLine,
-                    rect.Right - 10,
-                    rect.Y + 8,
-                    rect.Right - 10,
-                    rect.Bottom - 8
+                    purpleLine,
+                    rect.Right - 15,
+                    rect.Y + 5,
+                    rect.Right - 15,
+                    rect.Bottom - 5
                 );
             }
         }
 
-        private void DrawTechDetails(
+        private void DrawObstacleWindows(
             Graphics g,
-            Rectangle rect)
+            Rectangle rect,
+            bool isTop)
         {
-            if (rect.Height < 100)
+            if (rect.Height < 75)
                 return;
 
-            for (int y = rect.Y + 55;
-                 y + 25 < rect.Bottom - 25;
-                 y += 90)
+            using (SolidBrush darkWindow = new SolidBrush(
+                Color.FromArgb(230, 3, 12, 32)))
+            using (SolidBrush blueWindow = new SolidBrush(
+                Color.FromArgb(210, 35, 170, 225)))
+            using (SolidBrush purpleWindow = new SolidBrush(
+                Color.FromArgb(200, 135, 75, 235)))
             {
-                Rectangle panel = new Rectangle(
-                    rect.X + 19,
-                    y,
-                    32,
-                    28
-                );
+                int startY = rect.Y + 32;
+                int endY = rect.Bottom - 18;
 
-                using (SolidBrush panelBrush =
-                    new SolidBrush(Color.FromArgb(225, 4, 12, 34)))
-                using (Pen border =
-                    new Pen(Color.FromArgb(180, 90, 190, 255), 1))
-                using (Pen light =
-                    new Pen(Color.FromArgb(220, 50, 230, 255), 2))
+                for (int y = startY; y + 17 < endY; y += 48)
                 {
-                    g.FillRectangle(panelBrush, panel);
-                    g.DrawRectangle(border, panel);
+                    for (int column = 0; column < 2; column++)
+                    {
+                        int windowX = rect.X + 21 + column * 17;
 
+                        Rectangle window = new Rectangle(
+                            windowX,
+                            y,
+                            9,
+                            18
+                        );
+
+                        g.FillRectangle(darkWindow, window);
+
+                        if ((y + column + (isTop ? 1 : 0)) % 3 == 0)
+                            g.FillRectangle(purpleWindow, window.X + 2,
+                                window.Y + 3, 5, 11);
+                        else
+                            g.FillRectangle(blueWindow, window.X + 2,
+                                window.Y + 3, 5, 11);
+                    }
+                }
+            }
+        }
+
+        private void DrawObstacleFloors(Graphics g, Rectangle rect)
+        {
+            if (rect.Height < 65)
+                return;
+
+            using (Pen floorLine = new Pen(
+                Color.FromArgb(100, 90, 150, 210), 1))
+            using (Pen floorGlow = new Pen(
+                Color.FromArgb(40, 40, 210, 255), 3))
+            {
+                for (int y = rect.Y + 25;
+                     y < rect.Bottom - 10;
+                     y += 48)
+                {
                     g.DrawLine(
-                        light,
-                        panel.X + 6,
-                        panel.Y + 8,
-                        panel.Right - 6,
-                        panel.Y + 8
+                        floorGlow,
+                        rect.X + 16,
+                        y,
+                        rect.Right - 16,
+                        y
                     );
 
                     g.DrawLine(
-                        light,
-                        panel.X + 6,
-                        panel.Y + 19,
-                        panel.Right - 6,
-                        panel.Y + 19
+                        floorLine,
+                        rect.X + 16,
+                        y,
+                        rect.Right - 16,
+                        y
                     );
                 }
             }
         }
 
-        private void DrawCap(
+        private void DrawEnergyGate(
             Graphics g,
             Rectangle rect,
             bool isTop)
         {
-            const int capHeight = 20;
+            int capHeight = 20;
 
             Rectangle cap = isTop
                 ? new Rectangle(
-                    rect.X - 8,
+                    rect.X - 9,
                     rect.Bottom - capHeight,
-                    rect.Width + 16,
-                    capHeight
-                )
+                    rect.Width + 18,
+                    capHeight)
                 : new Rectangle(
-                    rect.X - 8,
+                    rect.X - 9,
                     rect.Y,
-                    rect.Width + 16,
-                    capHeight
-                );
+                    rect.Width + 18,
+                    capHeight);
 
-            using (LinearGradientBrush brush =
+            using (LinearGradientBrush capBrush =
                 new LinearGradientBrush(
                     cap,
-                    Color.FromArgb(20, 75, 145),
+                    Color.FromArgb(18, 75, 145),
                     Color.FromArgb(45, 205, 235),
                     LinearGradientMode.Vertical))
-            using (Pen glow =
-                new Pen(Color.FromArgb(65, 35, 220, 255), 8))
-            using (Pen outline =
-                new Pen(Color.FromArgb(245, 125, 245, 255), 2))
+            using (Pen glow = new Pen(
+                Color.FromArgb(75, 35, 220, 255), 9))
+            using (Pen outline = new Pen(
+                Color.FromArgb(245, 130, 245, 255), 2))
             {
-                g.FillRectangle(brush, cap);
+                g.FillRectangle(capBrush, cap);
                 g.DrawRectangle(glow, cap);
                 g.DrawRectangle(outline, cap);
             }
 
-            using (Pen energy =
-                new Pen(Color.FromArgb(235, 225, 255, 255), 2))
+            // Energy strip
+            using (Pen energy = new Pen(
+                Color.FromArgb(240, 225, 255, 255), 2))
             {
                 int centerY = cap.Y + cap.Height / 2;
 
@@ -272,6 +346,39 @@ namespace YMH219_FlappyBird
                     centerY,
                     cap.Right - 12,
                     centerY
+                );
+            }
+
+            // Small illuminated bolts
+            using (SolidBrush bolt = new SolidBrush(Color.White))
+            {
+                g.FillEllipse(bolt, cap.X + 7, cap.Y + 7, 4, 4);
+                g.FillEllipse(bolt, cap.Right - 11, cap.Y + 7, 4, 4);
+            }
+        }
+
+        private void DrawObstacleCornerLights(Graphics g, Rectangle rect)
+        {
+            if (rect.Height < 30)
+                return;
+
+            using (SolidBrush light = new SolidBrush(
+                Color.FromArgb(230, 100, 240, 255)))
+            {
+                g.FillEllipse(
+                    light,
+                    rect.X + 4,
+                    rect.Y + 5,
+                    4,
+                    4
+                );
+
+                g.FillEllipse(
+                    light,
+                    rect.Right - 8,
+                    rect.Y + 5,
+                    4,
+                    4
                 );
             }
         }
