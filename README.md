@@ -253,6 +253,7 @@ YMH219-FlappyBird/
 ## 👩‍💻 Geliştirici
 
 **Yasemin Ubeyd**  
+Öğrenci Numarası: **250541603**  
 GitHub: [@yaseminu0](https://github.com/yaseminu0)  
 Repository: [YMH219-FlappyBird](https://github.com/yaseminu0/YMH219-FlappyBird)
 
